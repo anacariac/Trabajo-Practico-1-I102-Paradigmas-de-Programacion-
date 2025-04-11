@@ -11,4 +11,16 @@ Rareza ItemMagicos::getRareza(){return rareza;};
 
 size_t ItemMagicos::getPower(){return power;}; 
 
+size_t ItemMagicos::getPowerModificado() {
+    if(rareza == Rareza::COMUN){
+         return power;
+     } 
+    else if(rareza == Rareza::RARO){
+          return static_cast<size_t>(power * 1.25);
+     }
+     else{
+         return static_cast<size_t>(power * 1.5);
+     } 
+ }
+
 ItemMagicos::~ItemMagicos(){}

@@ -7,14 +7,13 @@ enum class TiposHechizos {ENCANTADOR, DESEO};
 
 class Pocion: public ItemMagicos{
     private:
-        TiposPocion tipo;
+        TiposPocion tipoPocion;
     
     public:
-        Pocion(string nomb, size_t power,Rareza rareza, TiposPocion tipo);
+        Pocion(string nomb, size_t power,Rareza rareza, TiposPocion tipoPocion);
     
         void UsoComun() override;
         TiposPocion getTipoPocion();
-        size_t getPowerModificado();
     
         //Ataques especiales
         size_t AtaqueCombinado(string TipoDeArma); // si existe otra arma en el juego se fija su afinidad para que un ataque conjunto sea usado
@@ -57,15 +56,15 @@ class Baston: public ItemMagicos{
 
 class LibroHechizos: public ItemMagicos{
     private:
-        TiposHechizos tipo;
+        TiposHechizos tipoHechizo;
     
     public:
-        LibroHechizos(string nomb, size_t power,Rareza rareza, TiposPocion tipo);
+        LibroHechizos(string nomb, size_t power,Rareza rareza, TiposHechizos tipoHechizo);
         
         void UsoComun() override;
         TiposHechizos getTipoHechizo();
 
         //Ataques especiales
         size_t FlautistaHamelin(); //Si el hechizo es tipo encantador toma el control del enemigo
-        size_t MakeAWish(); // Si el hechizo es tipo deseo podes
+        size_t MakeAWish(); // deseo mágico que se manifiesta como daño elevado
     };
