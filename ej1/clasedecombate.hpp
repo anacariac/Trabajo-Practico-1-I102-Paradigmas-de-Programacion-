@@ -17,7 +17,7 @@ public:
     string getTipo() override;
     Rareza getRareza();
     virtual float getFilo();
-    size_t getPowerModificado();
+    size_t getPowerModificado() override;
     size_t getPower(); // Cuanto power le quita al enemigo, depende del ataque que haga luego visto en los personajes
     virtual void UsoComun(); // imprime que hace el objeto
 

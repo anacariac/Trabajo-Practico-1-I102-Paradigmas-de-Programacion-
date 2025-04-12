@@ -2,13 +2,12 @@
 #include "clasedecombate.hpp"
 enum class MaterialesHacha {HIERRO, DIAMANTE };
 enum class TiposLanza {HIERRO, FUEGO, LONGINUS};
-enum class TiposEspada {GRIFFINDOR, EXCALIBUR, SABLE_LASER};
+enum class TiposEspada {GRIFFINDOR, EXCALIBUR, SABLE_LASER, KATANA};
 enum class MaterialesGarrote {MADERA, METAL};
 
 class HachaSimple: public ItemCombate{
     private:
         MaterialesHacha materialHacha;
-        float filo;
     
     public:
         HachaSimple(string nomb, size_t power, float filo, Rareza rareza, MaterialesHacha material);
@@ -25,7 +24,6 @@ class HachaSimple: public ItemCombate{
 class HachaDoble: public ItemCombate{
     private:
         MaterialesHacha MaterialesHachaDoble;
-        float filo;
     
     public:
         HachaDoble(string nomb, size_t power, float filo, Rareza rareza, MaterialesHacha material);
@@ -42,7 +40,6 @@ class HachaDoble: public ItemCombate{
 class Espada: public ItemCombate{
     private:
         TiposEspada tipoEspada;
-        float filo;
     
     public:
         Espada(string nomb, size_t power, float filo, Rareza rareza, TiposEspada tipo);
@@ -55,12 +52,12 @@ class Espada: public ItemCombate{
         size_t InvocacionArturica(); // fuerza divina arturica da mayor potencia de ataque si la espada es tipo excalibur
         size_t FuriaJedi(); // sable laser ataca mas fuerte
         size_t AtaquedeLeon(); //espada de griffindor ataca mas fuerte
+        size_t AtaqueSamurai(); // Si tiene una katana
 };
 
 class Lanza: public ItemCombate{
     private:
         TiposLanza tipoLanza; 
-        float filo;
     
     public:
         Lanza(string nomb, size_t power, float filo, Rareza rareza, TiposLanza tipo);
@@ -79,7 +76,6 @@ class Lanza: public ItemCombate{
 class Garrote: public ItemCombate{
     private:
         MaterialesGarrote materialHacha;
-        float filo;
     
     public:
         Garrote(string nomb, size_t power, float filo, Rareza rareza, MaterialesGarrote material);
