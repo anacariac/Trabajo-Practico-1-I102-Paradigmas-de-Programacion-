@@ -37,10 +37,10 @@ class Paladin: public GUERREROS{
 
 class Caballero: public GUERREROS{
     private:
-        TipoCaballero tipoBarbaro;
+        TipoCaballero tipoCaballero;
     
     public:
-        Caballero(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, TipoCaballero tipoBarbaro);
+        Caballero(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, TipoCaballero tipoCaballero);
 
         void Atacar() override;
         void Descansar() override;

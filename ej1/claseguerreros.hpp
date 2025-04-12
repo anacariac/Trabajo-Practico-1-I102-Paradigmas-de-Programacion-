@@ -11,17 +11,20 @@ class GUERREROS: public Personajes{
         size_t fuerza;
         size_t resistencia;
         vector<shared_ptr<ARMAS>> armas;
+        int armaSeleccionada = 0; // por defecto usa la primera arma
+
     public:
         GUERREROS(string nomb,string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas);
 
         string getNombre() override;
         string getTipo() override;
-        void AgregarArma() override;
-        void QuitarArma()override;
+        void AgregarArma(shared_ptr<ARMAS> arma) override;
+        void QuitarArma(shared_ptr<ARMAS> arma)override;
         virtual void Atacar() = 0;
         virtual void Descansar() = 0;
         //virtual void Defender() = 0;
-        virtual void UsarArma() = 0;
+        void UsarArma() override;
+        void CambiarArma(int indice);
         virtual void MostrarEstado() = 0;
 
         ~GUERREROS();
