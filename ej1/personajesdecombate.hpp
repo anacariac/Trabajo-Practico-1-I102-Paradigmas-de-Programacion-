@@ -12,7 +12,6 @@ class Barbaro: public GUERREROS{
 
         void Atacar() override;
         void Descansar() override;
-        //void Defender() override;
         void UsarArma() override;
         void MostrarEstado() override;
 
@@ -28,7 +27,6 @@ class Paladin: public GUERREROS{
 
         void Atacar() override;
         void Descansar() override;
-        //void Defender() override;
         void UsarArma() override;
         void MostrarEstado() override;
 
@@ -44,7 +42,6 @@ class Caballero: public GUERREROS{
 
         void Atacar() override;
         void Descansar() override;
-        //void Defender() override;
         void UsarArma() override;
         void MostrarEstado() override;
 
@@ -62,7 +59,6 @@ class Mercenario: public GUERREROS{
 
         void Atacar() override;
         void Descansar() override;
-        //void Defender() override;
         void UsarArma() override;
         void MostrarEstado() override;
 
@@ -78,7 +74,6 @@ class Gladiador: public GUERREROS{
 
         void Atacar() override;
         void Descansar() override;
-        //void Defender() override;
         void UsarArma() override;
         void MostrarEstado() override;
 

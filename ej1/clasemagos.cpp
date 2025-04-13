@@ -57,7 +57,7 @@ void MAGOS::AgregarArma(shared_ptr<ARMAS> arma) {
     }
 
     armas.push_back(arma);
-    cout << "Arma agregada exitosamente." << endl;
+    cout << nombre << " ha agregado un arma al inventario." << endl;
 }
 
 void MAGOS::QuitarArma(shared_ptr<ARMAS> arma) {

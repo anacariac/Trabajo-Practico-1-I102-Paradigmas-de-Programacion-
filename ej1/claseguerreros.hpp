@@ -22,7 +22,6 @@ class GUERREROS: public Personajes{
         void QuitarArma(shared_ptr<ARMAS> arma)override;
         virtual void Atacar() = 0;
         virtual void Descansar() = 0;
-        //virtual void Defender() = 0;
         void UsarArma() override;
         void CambiarArma(int indice);
         virtual void MostrarEstado() = 0;

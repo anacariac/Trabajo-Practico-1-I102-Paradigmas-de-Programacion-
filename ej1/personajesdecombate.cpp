@@ -18,7 +18,7 @@ void Barbaro::UsarArma() {
 }
 
 void Barbaro::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Fuerza: " << fuerza << endl;
     cout << "Resistencia: " << resistencia << endl;
@@ -62,7 +62,7 @@ void Paladin::UsarArma() {
 }
 
 void Paladin::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Fuerza: " << fuerza << endl;
     cout << "Resistencia: " << resistencia << endl;
@@ -102,7 +102,7 @@ void Caballero::UsarArma() {
 }
 
 void Caballero::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Fuerza: " << fuerza << endl;
     cout << "Resistencia: " << resistencia << endl;
@@ -156,11 +156,11 @@ void Mercenario::UsarArma() {
 }
 
 void Mercenario::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Fuerza: " << fuerza << endl;
     cout << "Resistencia: " << resistencia << endl;
-    cout << "Oro"<< oro<<endl;
+    cout << "Oro: "<< oro<<endl;
     cout << "Armas: ";
     if (armas.empty()) {
         cout << "ninguna" << endl;
@@ -195,7 +195,7 @@ void Gladiador::UsarArma() {
 }
 
 void Gladiador::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Fuerza: " << fuerza << endl;
     cout << "Resistencia: " << resistencia << endl;

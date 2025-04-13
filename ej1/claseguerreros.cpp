@@ -11,6 +11,10 @@ string GUERREROS::getNombre() {return nombre;}
 string GUERREROS::getTipo() {return tipo;}
 
 void GUERREROS::AgregarArma(shared_ptr<ARMAS> arma) {
+    if (armas.size() >= 2) {
+        cout << "Este mago ya posee el máximo de armas permitidas (2)." << endl;
+        return;
+    }
     armas.push_back(arma);
     cout << nombre << " ha agregado un arma al inventario." << endl;
 }

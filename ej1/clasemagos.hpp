@@ -24,7 +24,6 @@ class MAGOS: public Personajes{
         size_t getMana();
         virtual void Atacar() = 0;
         virtual void Meditar() = 0; // Recupera maná
-        //virtual void Defender() = 0;
         void UsarArma() override;
         void CambiarArma(int indice);
         virtual void MostrarEstado() = 0;

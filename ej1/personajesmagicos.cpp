@@ -18,7 +18,7 @@ void Hechicero::UsarArma() {
 }
 
 void Hechicero::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Nivel de Magia: " << nivelMagia << endl;
     cout << "Puntos de Maná: " << puntosMana << endl;
@@ -76,7 +76,7 @@ void Brujo::UsarArma() {
 }
 
 void Brujo::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Nivel de Magia: " << nivelMagia << endl;
     cout << "Puntos de Maná: " << puntosMana << endl;
@@ -118,7 +118,7 @@ void Conjurador::UsarArma() {
 }
 
 void Conjurador::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Nivel de Magia: " << nivelMagia << endl;
     cout << "Puntos de Maná: " << puntosMana << endl;
@@ -144,7 +144,6 @@ size_t Conjurador::InvocacionBestiasProtectoras() {
     return 40;
 }
 
-
 Nigromante::Nigromante(string nomb, string tipo, size_t nivel, size_t mana, vector<shared_ptr<ARMAS>> armas, size_t almas): MAGOS(nomb, tipo, nivel, mana, armas), cantAlmas(almas) {}
 
 void Nigromante::Atacar() {
@@ -164,7 +163,7 @@ void Nigromante::UsarArma() {
 }
 
 void Nigromante::MostrarEstado() {
-    cout << "Nombre: " << nombre << endl;
+    cout << "\nNombre: " << nombre << endl;
     cout << "Tipo: " << tipo << endl;
     cout << "Nivel de Magia: " << nivelMagia << endl;
     cout << "Puntos de Maná: " << puntosMana << endl;

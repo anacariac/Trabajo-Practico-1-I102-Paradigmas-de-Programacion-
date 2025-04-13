@@ -5,7 +5,7 @@
 #include "armasdecombate.hpp"
 #include "personajesdecombate.hpp"
 #include "personajesmagicos.hpp"
-
+/* 
 int main(){
     // Crear armas mágicas y físicas
     shared_ptr<ARMAS> pocion = make_shared<Pocion>("Poción de fuego", 20, Rareza::RARO, TiposPocion::CURACION);
@@ -69,3 +69,4 @@ int main(){
     cout << "\n--- FIN DE PRUEBA ---" << endl;
     return 0;
 }
+*/
