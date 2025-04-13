@@ -15,7 +15,7 @@ size_t MAGOS::getNivel() {return nivelMagia;}
 size_t MAGOS::getMana() {return puntosMana;}
 
 void MAGOS::CambiarArma(int indice) {
-    if (indice >= 0 && indice < armas.size()) {
+    if (indice >= 0 && indice < static_cast<int>(armas.size())) {
         armaSeleccionada = indice;
         cout << "Has cambiado al arma #" << indice + 1 << "." << endl;
     } else {
@@ -24,7 +24,7 @@ void MAGOS::CambiarArma(int indice) {
 }
 
 void MAGOS::UsarArma() {
-    if (armas.empty() || armaSeleccionada >= armas.size()) {
+    if (armas.empty() || static_cast<size_t>(armaSeleccionada) >= armas.size()) {
         cout << nombre << " no tiene un arma válida para usar." << endl;
         return;
     }

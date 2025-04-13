@@ -1,6 +1,5 @@
 #pragma once
 #include "armas.hpp"
-enum class Rareza {COMUN, RARO, LEGENDARIO}; 
 
 class ItemMagicos: public ARMAS{
 protected:
@@ -17,7 +16,7 @@ public:
     Rareza getRareza();
     size_t getPowerModificado() override;
     size_t getPower(); // Cuanto power le quita al enemigo, depende del ataque que haga luego visto en los personajes
-    virtual void UsoComun(); // imprime que hace el objeto
+    virtual void UsoComun() = 0; // imprime que hace el objeto
 
     ~ItemMagicos() override;
 

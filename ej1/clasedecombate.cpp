@@ -9,6 +9,8 @@ string ItemCombate::getTipo() {return tipo;}
 
 Rareza ItemCombate::getRareza() {return rareza;}
 
+float ItemCombate::getFilo() { return filo; }
+
 size_t ItemCombate::getPower() {return power;}
 
 size_t ItemCombate::getPowerModificado() {

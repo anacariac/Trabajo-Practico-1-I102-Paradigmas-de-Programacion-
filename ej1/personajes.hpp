@@ -1,5 +1,7 @@
 #pragma once
+#include "armas.hpp"
 #include <string>
+#include <memory>
 using namespace std;
 
 class Personajes{
@@ -10,5 +12,5 @@ class Personajes{
     virtual void QuitarArma(shared_ptr<ARMAS> arma)=0;
     virtual void UsarArma()=0;
     
-    virtual ~Personajes();
+    virtual ~Personajes() {};
 };

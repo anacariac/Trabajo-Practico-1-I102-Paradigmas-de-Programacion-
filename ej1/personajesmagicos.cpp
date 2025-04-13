@@ -164,7 +164,19 @@ void Nigromante::UsarArma() {
 }
 
 void Nigromante::MostrarEstado() {
-    cout << "[NIGROMANTE] Nombre: " << nombre << ", Mana: " << puntosMana << ", Almas: " << cantAlmas << ", Nivel: " << nivelMagia << endl;
+    cout << "Nombre: " << nombre << endl;
+    cout << "Tipo: " << tipo << endl;
+    cout << "Nivel de Magia: " << nivelMagia << endl;
+    cout << "Puntos de Maná: " << puntosMana << endl;
+    cout << "Armas: ";
+    if (armas.empty()) {
+        cout << "ninguna" << endl;
+    } else {
+        for (const auto& arma : armas) {
+            cout << arma->getNombre() << " ";
+        }
+        cout << endl;
+    }
 }
 
 size_t Nigromante::EjercitodeAlmas() {

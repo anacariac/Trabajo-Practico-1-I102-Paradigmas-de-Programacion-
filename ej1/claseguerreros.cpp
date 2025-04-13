@@ -26,7 +26,7 @@ void GUERREROS::QuitarArma(shared_ptr<ARMAS> arma) {
 }
 
 void GUERREROS::UsarArma() {
-    if (armas.empty()) {
+    if (armas.empty() || static_cast<size_t>(armaSeleccionada) >= armas.size()) {
         cout << nombre << " no tiene armas equipadas." << endl;
         return;
     }
@@ -52,7 +52,8 @@ void GUERREROS::UsarArma() {
 }
 
 void GUERREROS::CambiarArma(int indice) {
-    if (indice >= 0 && indice < armas.size()) {
+    if (indice >= 0 && indice < static_cast<int>(armas.size()))
+ {
         armaSeleccionada = indice;
         cout << nombre << " ha cambiado al arma #" << indice + 1 << "." << endl;
     } else {
