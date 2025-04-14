@@ -14,6 +14,8 @@ size_t MAGOS::getNivel() {return nivelMagia;}
 
 size_t MAGOS::getMana() {return puntosMana;}
 
+vector<shared_ptr<ARMAS>> MAGOS::getArmas(){ return armas;}
+
 void MAGOS::CambiarArma(int indice) {
     if (indice >= 0 && indice < static_cast<int>(armas.size())) {
         armaSeleccionada = indice;

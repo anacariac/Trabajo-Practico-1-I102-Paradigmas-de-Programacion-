@@ -20,6 +20,7 @@ class GUERREROS: public Personajes{
         string getTipo() override;
         void AgregarArma(shared_ptr<ARMAS> arma) override;
         void QuitarArma(shared_ptr<ARMAS> arma)override;
+        vector<shared_ptr<ARMAS>> getArmas() override;
         virtual void Atacar() = 0;
         virtual void Descansar() = 0;
         void UsarArma() override;

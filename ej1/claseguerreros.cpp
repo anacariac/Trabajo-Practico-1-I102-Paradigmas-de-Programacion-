@@ -10,6 +10,8 @@ string GUERREROS::getNombre() {return nombre;}
 
 string GUERREROS::getTipo() {return tipo;}
 
+vector<shared_ptr<ARMAS>> GUERREROS::getArmas(){ return armas;}
+
 void GUERREROS::AgregarArma(shared_ptr<ARMAS> arma) {
     if (armas.size() >= 2) {
         cout << "Este mago ya posee el máximo de armas permitidas (2)." << endl;

@@ -73,7 +73,7 @@ shared_ptr<Personajes> PersonajeFactory::CrearPersonajeAleatorio(bool esMago, st
 vector<shared_ptr<Personajes>> PersonajeFactory::CrearPersonajesConArmas() {
     srand(time(nullptr));
     
-    int cantMagos = 3 + rand() % 5;     // 3 a 7
+    int cantMagos = 3 + rand() % 5; // 3 a 7
     int cantGuerreros = 3 + rand() % 5; // 3 a 7
 
     vector<shared_ptr<Personajes>> personajes;

@@ -20,6 +20,7 @@ class MAGOS: public Personajes{
         string getTipo() override;
         void AgregarArma(shared_ptr<ARMAS> arma)override;
         void QuitarArma(shared_ptr<ARMAS> arma) override;
+        vector<shared_ptr<ARMAS>> getArmas() override;
         size_t getNivel();
         size_t getMana();
         virtual void Atacar() = 0;
