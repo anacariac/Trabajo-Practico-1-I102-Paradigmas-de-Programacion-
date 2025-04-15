@@ -53,23 +53,24 @@ void GUERREROS::UsarArma() {
     }
 
     const unique_ptr<ARMAS>& arma = armas[armaSeleccionada];
-    auto* combate = dynamic_cast<ItemCombate*>(arma.get());
-    if (combate) {
+    
+    if (arma->getTipo()=="Combate") {
         cout << nombre << " canaliza su poder de combate..." << endl;
-        combate->UsoComun();
+        arma->getPowerModificado();
     } else {
         cout << nombre << " intenta usar un arma sin afinidad de combate..." << endl;
         
         // Calculando la reducción en el efecto de ataque si el arma no de combate
         size_t ataqueReducido = 0;
-        if (auto* magica = dynamic_cast<ItemMagicos*>(arma.get())) {
-            ataqueReducido = magica->getPowerModificado() / 2;  
+        if (arma->getTipo()=="Magico") {
+            ataqueReducido = arma->getPowerModificado() / 2;  
             cout << "El ataque de " << nombre << " se ve reducido por falta de afinidad mágica. " 
                  << "El poder de ataque de esta arma es ahora " << ataqueReducido << "." << endl;
         } else {
             cout << "El arma equipada no tiene poder de combate adecuado." << endl;
         }
     }
+    //delete combate;
 }
 
 void GUERREROS::CambiarArma(int indice) {

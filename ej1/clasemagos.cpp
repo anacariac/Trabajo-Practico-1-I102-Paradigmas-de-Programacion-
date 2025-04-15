@@ -40,18 +40,17 @@ void MAGOS::UsarArma() {
         return;
     }
 
-    const auto& arma = armas[armaSeleccionada]; //no copiams
-    auto* magica = dynamic_cast<ItemMagicos*>(arma.get()); //trabajamos con rawpointers de manera general
-    if (magica) {
+    const unique_ptr<ARMAS>& arma = armas[armaSeleccionada]; //no copia
+    if (arma->getTipo()=="Magico") {
         cout << nombre << " canaliza su poder mágico..." << endl;
-        magica->UsoComun();
+        arma->getPowerModificado();
     } else {
         cout << nombre << " intenta usar un arma sin afinidad mágica..." << endl;
         
-        // Calculando la reducción en el efecto de ataque si el arma no es mágica
+        // Calculando la reducción en el efecto de ataque si el arma no de combate
         size_t ataqueReducido = 0;
-        if (auto* combate = dynamic_cast<ItemCombate*>(arma.get())) {
-            ataqueReducido = combate->getPowerModificado() / 2;  
+        if (arma->getTipo()=="Combate") {
+            ataqueReducido = arma->getPowerModificado() / 2;  
             cout << "El ataque de " << nombre << " se ve reducido por falta de afinidad mágica. " 
                  << "El poder de ataque de esta arma es ahora " << ataqueReducido << "." << endl;
         } else {

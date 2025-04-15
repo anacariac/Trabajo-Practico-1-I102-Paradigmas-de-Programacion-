@@ -7,7 +7,7 @@
 class GUERREROS: public Personajes{
     protected:
         string nombre;
-        string tipo = "Guerrero";
+        string tipo = "Combate";
         int HP;
         size_t fuerza;
         size_t resistencia;

@@ -22,5 +22,5 @@ size_t ItemMagicos::getPowerModificado() {
          return static_cast<size_t>(power * 1.5);
      } 
  }
-
+ 
 ItemMagicos::~ItemMagicos(){}
