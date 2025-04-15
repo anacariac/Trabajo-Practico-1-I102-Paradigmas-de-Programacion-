@@ -33,7 +33,7 @@ int main(){
 
         int opcion2 = rand() % 3 + 1;
 
-        auto& armaUsada1 = jugador1->getArmas()[0]; //usamos el arma principal por default
+        auto& armaUsada1 = jugador1->getArmas()[0]; //usamos el arma principal 
         auto& armaUsada2 = jugador2->getArmas()[0];
 
         // Mostrar acciones

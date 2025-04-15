@@ -16,21 +16,24 @@ class MAGOS: public Personajes{
         MAGOS(string nomb, int hp, size_t nivel, size_t mana, vector<unique_ptr<ARMAS>> armas);
 
     public:
+        //GETTERS
         string getNombre() override;
         string getTipo() override;
         size_t getHP() override;
+        size_t getNivel();
+        size_t getMana();
+        //SETTER
         void setHP( int nuevohp) override;
+        //METODOS A IMPLEMENTAR
         void Daño( size_t cant) override;
         void AgregarArma(unique_ptr<ARMAS> arma)override;
         void QuitarArma(unique_ptr<ARMAS> arma) override;
         const vector<unique_ptr<ARMAS>>& getArmas() override;
         void UsarArma() override;
-        size_t getNivel();
-        size_t getMana();
         void CambiarArma(int indice);
         virtual void Atacar() = 0;
         virtual void Meditar() = 0; // Recupera maná
         virtual void MostrarEstado() = 0;
-
+        //DESTRUCTOR 
         ~MAGOS();
 };

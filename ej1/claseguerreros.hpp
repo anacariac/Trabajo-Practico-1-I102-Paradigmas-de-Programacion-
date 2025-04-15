@@ -16,11 +16,13 @@ class GUERREROS: public Personajes{
         GUERREROS(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas);
 
     public:
-
+        //GETTERS
         string getNombre() override;
         string getTipo() override;
         size_t getHP() override;
+        //SETTER
         void setHP( int nuevohp) override;
+        //METODOS A IMPLEMENTAR
         void Daño( size_t cant) override;
         void AgregarArma(unique_ptr<ARMAS> arma) override;
         void QuitarArma(unique_ptr<ARMAS> arma)override;
@@ -32,7 +34,6 @@ class GUERREROS: public Personajes{
         virtual void Atacar() = 0;
         virtual void Descansar() = 0;
         virtual void MostrarEstado() = 0;
-
-
+        //DESTRUCTOR
         ~GUERREROS();
 };
