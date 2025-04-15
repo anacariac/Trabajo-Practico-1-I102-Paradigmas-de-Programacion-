@@ -8,25 +8,28 @@ class MAGOS: public Personajes{
     protected:  
         string nombre;
         string tipo = "Mago";
+        int HP;
         size_t nivelMagia;
         size_t puntosMana;
-        vector<shared_ptr<ARMAS>> armas;
+        vector<unique_ptr<ARMAS>> armas;
         int armaSeleccionada = 0; // por defecto usa la primera arma
+        MAGOS(string nomb, int hp, size_t nivel, size_t mana, vector<unique_ptr<ARMAS>> armas);
 
     public:
-        MAGOS(string nomb, string tipo, size_t nivel, size_t mana, vector<shared_ptr<ARMAS>> armas);
-
         string getNombre() override;
         string getTipo() override;
-        void AgregarArma(shared_ptr<ARMAS> arma)override;
-        void QuitarArma(shared_ptr<ARMAS> arma) override;
-        vector<shared_ptr<ARMAS>> getArmas() override;
+        size_t getHP() override;
+        void setHP( int nuevohp) override;
+        void Daño( size_t cant) override;
+        void AgregarArma(unique_ptr<ARMAS> arma)override;
+        void QuitarArma(unique_ptr<ARMAS> arma) override;
+        const vector<unique_ptr<ARMAS>>& getArmas() override;
+        void UsarArma() override;
         size_t getNivel();
         size_t getMana();
+        void CambiarArma(int indice);
         virtual void Atacar() = 0;
         virtual void Meditar() = 0; // Recupera maná
-        void UsarArma() override;
-        void CambiarArma(int indice);
         virtual void MostrarEstado() = 0;
 
         ~MAGOS();

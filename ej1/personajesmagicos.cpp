@@ -1,7 +1,7 @@
 #include "personajesmagicos.hpp"
 #include <iostream>
 
-Hechicero::Hechicero(string nomb, string tipo, size_t nivel, size_t mana, vector<shared_ptr<ARMAS>> armas, TipoHechicero tipoH): MAGOS(nomb, tipo, nivel, mana, armas), tipoHechicero(tipoH) {}
+Hechicero::Hechicero(string nomb, int hp, size_t nivel, size_t mana, vector<unique_ptr<ARMAS>> armas, TipoHechicero tipoH): MAGOS(nomb, hp, nivel, mana, move(armas)), tipoHechicero(tipoH) {}
 
 void Hechicero::Atacar() {
     cout << nombre << " lanza un hechizo básico desde su varita mágica." << endl;
@@ -22,21 +22,20 @@ void Hechicero::MostrarEstado() {
     cout << "Tipo: " << tipo << endl;
     cout << "Nivel de Magia: " << nivelMagia << endl;
     cout << "Puntos de Maná: " << puntosMana << endl;
-    cout << "Armas: ";
-    if (armas.empty()) {
-        cout << "ninguna" << endl;
-    } else {
-        for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
-        }
-        cout << endl;
-    }
-
     cout << "Tipo de Hechicero: ";
     switch (tipoHechicero) {
         case TipoHechicero::ANIMAGOS: cout << "Animagos" << endl; break;
         case TipoHechicero::MORTIFAGOS: cout << "Mortífagos" << endl; break;
         case TipoHechicero::ELITE: cout << "Elite" << endl; break;
+    }
+    cout << "Armas: ";
+    if (armas.empty()) {
+        cout << "ninguna" << endl;
+    } else {
+        for (const auto& arma : armas) {
+            cout << arma->getNombre() << "\n       ";
+        }
+        cout << endl;
     }
 }
 
@@ -59,7 +58,7 @@ size_t Hechicero::MaldicionIlimitada() {
     return 0;
 }
 
-Brujo::Brujo(string nomb, string tipo, size_t nivel, size_t mana, vector<shared_ptr<ARMAS>> armas, TipoBrujo tipoBrujo): MAGOS(nomb, tipo, nivel, mana, armas), tipoBrujo(tipoBrujo) {}
+Brujo::Brujo(string nomb, int hp, size_t nivel, size_t mana, vector<unique_ptr<ARMAS>> armas, TipoBrujo tipoBrujo): MAGOS(nomb, hp, nivel, mana, move(armas)), tipoBrujo(tipoBrujo) {}
 
 void Brujo::Atacar() {
     cout << nombre << " lanza un hechizo oscuro." << endl;
@@ -80,20 +79,19 @@ void Brujo::MostrarEstado() {
     cout << "Tipo: " << tipo << endl;
     cout << "Nivel de Magia: " << nivelMagia << endl;
     cout << "Puntos de Maná: " << puntosMana << endl;
+    cout << "Tipo de Brujo: ";
+    switch (tipoBrujo) {
+        case TipoBrujo::MAGIA_BLANCA: cout << "Magia Blanca" << endl; break;
+        case TipoBrujo::MAGIA_NEGRA: cout << "Magia Negra" << endl; break;
+    }
     cout << "Armas: ";
     if (armas.empty()) {
         cout << "ninguna" << endl;
     } else {
         for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
+            cout << arma->getNombre() << "\n       ";
         }
         cout << endl;
-    }
-
-    cout << "Tipo de Brujo: ";
-    switch (tipoBrujo) {
-        case TipoBrujo::MAGIA_BLANCA: cout << "Magia Blanca" << endl; break;
-        case TipoBrujo::MAGIA_NEGRA: cout << "Magia Negra" << endl; break;
     }
 }
 size_t Brujo::LlamadoAquelarre() {
@@ -101,7 +99,7 @@ size_t Brujo::LlamadoAquelarre() {
     return 30;
 }
 
-Conjurador::Conjurador(string nomb, string tipo, size_t nivel, size_t mana, vector<shared_ptr<ARMAS>> armas, TipoBrujo tipoConjurador): MAGOS(nomb, tipo, nivel, mana, armas), tipoConjurador(tipoConjurador) {}
+Conjurador::Conjurador(string nomb, int hp, size_t nivel, size_t mana, vector<unique_ptr<ARMAS>> armas, TipoBrujo tipoConjurador): MAGOS(nomb, hp, nivel, mana, move(armas)), tipoConjurador(tipoConjurador) {}
 
 void Conjurador::Atacar() {
     cout << nombre << " lanza una invocación de daño mágico." << endl;
@@ -122,20 +120,19 @@ void Conjurador::MostrarEstado() {
     cout << "Tipo: " << tipo << endl;
     cout << "Nivel de Magia: " << nivelMagia << endl;
     cout << "Puntos de Maná: " << puntosMana << endl;
+    cout << "Tipo de Conjurador: ";
+    switch (tipoConjurador) {
+        case TipoBrujo::MAGIA_BLANCA: cout << "Magia Blanca" << endl; break;
+        case TipoBrujo::MAGIA_NEGRA: cout << "Magia Negra" << endl; break;
+    }
     cout << "Armas: ";
     if (armas.empty()) {
         cout << "ninguna" << endl;
     } else {
         for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
+            cout << arma->getNombre() << "\n       ";
         }
         cout << endl;
-    }
-
-    cout << "Tipo de Conjurador: ";
-    switch (tipoConjurador) {
-        case TipoBrujo::MAGIA_BLANCA: cout << "Magia Blanca" << endl; break;
-        case TipoBrujo::MAGIA_NEGRA: cout << "Magia Negra" << endl; break;
     }
 }
 
@@ -144,7 +141,7 @@ size_t Conjurador::InvocacionBestiasProtectoras() {
     return 40;
 }
 
-Nigromante::Nigromante(string nomb, string tipo, size_t nivel, size_t mana, vector<shared_ptr<ARMAS>> armas, size_t almas): MAGOS(nomb, tipo, nivel, mana, armas), cantAlmas(almas) {}
+Nigromante::Nigromante(string nomb, int hp, size_t nivel, size_t mana, vector<unique_ptr<ARMAS>> armas, size_t almas): MAGOS(nomb, hp, nivel, mana, move(armas)), cantAlmas(almas) {}
 
 void Nigromante::Atacar() {
     cout << nombre << " invoca un alma para atacar al enemigo." << endl;
@@ -172,7 +169,7 @@ void Nigromante::MostrarEstado() {
         cout << "ninguna" << endl;
     } else {
         for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
+            cout << arma->getNombre() << "\n       ";
         }
         cout << endl;
     }

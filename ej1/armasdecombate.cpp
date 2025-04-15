@@ -120,7 +120,7 @@ size_t Lanza::LanzaEnLlamas() {
     return power;
 }
 
-Garrote::Garrote(string nomb, size_t power, float filo, Rareza rareza, MaterialesGarrote material): ItemCombate(nomb, power, filo, rareza), materialHacha(material) {}
+Garrote::Garrote(string nomb, size_t power, float filo, Rareza rareza, MaterialesGarrote material): ItemCombate(nomb, power, filo, rareza), materialGarrote(material) {}
 
 void Garrote::UsoComun() {
     cout << "Usas el garrote " << nombre << " para golpear con fuerza bruta." << endl;
@@ -128,10 +128,10 @@ void Garrote::UsoComun() {
 
 float Garrote::getFilo() {return filo;}// El garrote no tiene filo por ende siempre es cero
 
-MaterialesGarrote Garrote::getMaterialGarrote() {return materialHacha;}
+MaterialesGarrote Garrote::getMaterialGarrote() {return materialGarrote;}
 
 size_t Garrote::AplastamientoBrutal() {
-    if (materialHacha == MaterialesGarrote::METAL) {
+    if (materialGarrote == MaterialesGarrote::METAL) {
         cout << "¡Aplastamiento brutal! El garrote metálico destruye todo a su paso." << endl;
         return power + 20;
     }

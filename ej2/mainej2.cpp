@@ -2,6 +2,7 @@
 #include <iostream>
 
 int main() {
+    srand(time(nullptr));
     PersonajeFactory fabrica;
     auto personajes = fabrica.CrearPersonajesConArmas();
 

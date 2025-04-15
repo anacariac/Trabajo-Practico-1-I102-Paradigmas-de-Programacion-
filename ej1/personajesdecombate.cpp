@@ -1,7 +1,7 @@
 #include "personajesdecombate.hpp"
 #include <iostream>
 
-Barbaro::Barbaro(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, TipoBarbaro tipoBarbaro): GUERREROS(nomb, tipo, fuerza, resistencia, armas), tipoBarbaro(tipoBarbaro) {}
+Barbaro::Barbaro(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, TipoBarbaro tipoBarbaro): GUERREROS(nomb, hp, fuerza, resistencia, move(armas)), tipoBarbaro(tipoBarbaro) {}
 
 void Barbaro::Atacar() {
     cout << nombre << " ataca con furia bestial!" << endl;
@@ -22,21 +22,20 @@ void Barbaro::MostrarEstado() {
     cout << "Tipo: " << tipo << endl;
     cout << "Fuerza: " << fuerza << endl;
     cout << "Resistencia: " << resistencia << endl;
-    cout << "Armas: ";
-    if (armas.empty()) {
-        cout << "ninguna" << endl;
-    } else {
-        for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
-        }
-        cout << endl;
-    }
-
     cout << "Tipo de Barbaro: ";
     switch (tipoBarbaro) {
         case TipoBarbaro::OGRO: cout << "Ogro" << endl; break;
         case TipoBarbaro::TITAN: cout << "Titan" << endl; break;
         case TipoBarbaro::CICLOPE: cout << "Cicliope" << endl; break;
+    }
+    cout << "Armas: ";
+    if (armas.empty()) {
+        cout << "ninguna" << endl;
+    } else {
+        for (const auto& arma : armas) {
+            cout << arma->getNombre() << "\n       ";
+        }
+        cout << endl;
     }
 }
 
@@ -45,7 +44,7 @@ size_t Barbaro::AplastamientoColosal() {
     return fuerza * 2;
 }
 
-Paladin::Paladin(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, bool bendecido): GUERREROS(nomb, tipo, fuerza, resistencia, armas), bendecido(bendecido) {}
+Paladin::Paladin(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, bool bendecido): GUERREROS(nomb, hp, fuerza, resistencia, move(armas)), bendecido(bendecido) {}
 
 void Paladin::Atacar() {
     cout << nombre << " ataca con justicia divina!" << endl;
@@ -71,7 +70,7 @@ void Paladin::MostrarEstado() {
         cout << "ninguna" << endl;
     } else {
         for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
+            cout << arma->getNombre() << "\n       ";
         }
         cout << endl;
     }
@@ -85,7 +84,7 @@ size_t Paladin::AyudaDivina() {
     return fuerza;
 }
 
-Caballero::Caballero(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, TipoCaballero tipoBarbaro): GUERREROS(nomb, tipo, fuerza, resistencia, armas), tipoCaballero(tipoBarbaro) {}
+Caballero::Caballero(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, TipoCaballero tipoBarbaro): GUERREROS(nomb, hp, fuerza, resistencia, move(armas)), tipoCaballero(tipoBarbaro) {}
 
 void Caballero::Atacar() {
     cout << nombre << " ataca con honor!" << endl;
@@ -106,21 +105,21 @@ void Caballero::MostrarEstado() {
     cout << "Tipo: " << tipo << endl;
     cout << "Fuerza: " << fuerza << endl;
     cout << "Resistencia: " << resistencia << endl;
-    cout << "Armas: ";
-    if (armas.empty()) {
-        cout << "ninguna" << endl;
-    } else {
-        for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
-        }
-        cout << endl;
-    }
-
     cout << "Tipo de Caballero: ";
     switch (tipoCaballero) {
         case TipoCaballero::ZODIACO: cout << "Caballero del Zodiaco" << endl; break;
         case TipoCaballero::DE_ARTURO: cout << "Caballero de la Mesa Redonda" << endl; break;
     }
+    cout << "Armas: ";
+    if (armas.empty()) {
+        cout << "ninguna" << endl;
+    } else {
+        for (const auto& arma : armas) {
+            cout << arma->getNombre() << "\n       ";
+        }
+        cout << endl;
+    }
+
 }
 
 size_t Caballero::ShakaDeVirgo() {
@@ -139,7 +138,7 @@ size_t Caballero::SantoGrial() {
     return fuerza;
 }
 
-Mercenario::Mercenario(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, int oro): GUERREROS(nomb, tipo, fuerza, resistencia, armas), oro(oro) {}
+Mercenario::Mercenario(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, int oro): GUERREROS(nomb, hp, fuerza, resistencia, move(armas)), oro(oro) {}
 
 void Mercenario::Atacar() {
     cout << nombre << " ataca motivado por el oro!" << endl;
@@ -166,7 +165,7 @@ void Mercenario::MostrarEstado() {
         cout << "ninguna" << endl;
     } else {
         for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
+            cout << arma->getNombre() << "\n       ";
         }
         cout << endl;
     }
@@ -178,7 +177,7 @@ void Mercenario::RecolectarBotin() {
     cout << nombre << " recolecta botin y gana " << botin << " monedas de oro!" << endl;
 }
 
-Gladiador::Gladiador(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, bool arena): GUERREROS(nomb, tipo, fuerza, resistencia, armas), enArena(arena) {}
+Gladiador::Gladiador(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, bool arena): GUERREROS(nomb, hp, fuerza, resistencia, move(armas)), enArena(arena) {}
 
 void Gladiador::Atacar() {
     cout << nombre << " desata su furia en combate!" << endl;
@@ -204,7 +203,7 @@ void Gladiador::MostrarEstado() {
         cout << "ninguna" << endl;
     } else {
         for (const auto& arma : armas) {
-            cout << arma->getNombre() << " ";
+            cout << arma->getNombre() << "\n       ";
         }
         cout << endl;
     }

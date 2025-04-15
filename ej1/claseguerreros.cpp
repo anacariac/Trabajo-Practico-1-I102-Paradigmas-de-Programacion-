@@ -4,25 +4,40 @@
 #include <iostream>
 #include <algorithm>
 
-GUERREROS::GUERREROS(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas): nombre(nomb), tipo(tipo), fuerza(fuerza), resistencia(resistencia), armas(armas) {}
+GUERREROS::GUERREROS(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas): nombre(nomb), HP(hp), fuerza(fuerza), resistencia(resistencia), armas(move(armas)) {}
 
 string GUERREROS::getNombre() {return nombre;}
 
 string GUERREROS::getTipo() {return tipo;}
 
-vector<shared_ptr<ARMAS>> GUERREROS::getArmas(){ return armas;}
+size_t GUERREROS::getHP() {return HP;}
 
-void GUERREROS::AgregarArma(shared_ptr<ARMAS> arma) {
+void GUERREROS::setHP(int nuevoHP) { HP = nuevoHP; }
+
+void GUERREROS::Daño(size_t cantidad) {
+    HP -= cantidad;
+    if (HP < 0) HP = 0;
+}
+
+size_t GUERREROS::getFuerza(){return fuerza;}
+
+size_t GUERREROS::getResistencia(){return resistencia;}
+
+const vector<unique_ptr<ARMAS>>& GUERREROS::getArmas(){ return armas;}
+
+void GUERREROS::AgregarArma(unique_ptr<ARMAS> arma) {
     if (armas.size() >= 2) {
         cout << "Este mago ya posee el máximo de armas permitidas (2)." << endl;
         return;
     }
-    armas.push_back(arma);
+    armas.push_back(move(arma));
     cout << nombre << " ha agregado un arma al inventario." << endl;
 }
 
-void GUERREROS::QuitarArma(shared_ptr<ARMAS> arma) {
-    auto it = find(armas.begin(), armas.end(), arma);
+void GUERREROS::QuitarArma(unique_ptr<ARMAS> arma) {
+    auto it = find_if(armas.begin(), armas.end(), [&arma](const unique_ptr<ARMAS>& a) {
+        return a.get() == arma.get();
+    });
     if (it != armas.end()) {
         armas.erase(it);
         cout << nombre << " ha quitado un arma del inventario." << endl;
@@ -37,8 +52,8 @@ void GUERREROS::UsarArma() {
         return;
     }
 
-    auto arma = armas[armaSeleccionada];
-    auto combate = dynamic_pointer_cast<ItemCombate>(arma);
+    const unique_ptr<ARMAS>& arma = armas[armaSeleccionada];
+    auto* combate = dynamic_cast<ItemCombate*>(arma.get());
     if (combate) {
         cout << nombre << " canaliza su poder de combate..." << endl;
         combate->UsoComun();
@@ -47,7 +62,7 @@ void GUERREROS::UsarArma() {
         
         // Calculando la reducción en el efecto de ataque si el arma no de combate
         size_t ataqueReducido = 0;
-        if (auto magica = dynamic_pointer_cast<ItemMagicos>(arma)) {
+        if (auto* magica = dynamic_cast<ItemMagicos*>(arma.get())) {
             ataqueReducido = magica->getPowerModificado() / 2;  
             cout << "El ataque de " << nombre << " se ve reducido por falta de afinidad mágica. " 
                  << "El poder de ataque de esta arma es ahora " << ataqueReducido << "." << endl;

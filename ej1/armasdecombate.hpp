@@ -75,7 +75,7 @@ class Lanza: public ItemCombate{
 
 class Garrote: public ItemCombate{
     private:
-        MaterialesGarrote materialHacha;
+        MaterialesGarrote materialGarrote;
     
     public:
         Garrote(string nomb, size_t power, float filo, Rareza rareza, MaterialesGarrote material);

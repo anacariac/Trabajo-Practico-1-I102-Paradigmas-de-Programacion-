@@ -17,8 +17,8 @@
 
 class PersonajeFactory {
     public:
-        static shared_ptr<ARMAS> CrearArmaAleatoria(bool esMagico);
-        static shared_ptr<Personajes> CrearPersonajeAleatorio(bool esMago, string i);
-        static vector<shared_ptr<Personajes>> CrearPersonajesConArmas();
+        static unique_ptr<ARMAS> CrearArmaAleatoria(bool esMagico);
+        static unique_ptr<Personajes> CrearPersonajeAleatorio(bool esMago, string i);
+        static vector<unique_ptr<Personajes>> CrearPersonajesConArmas();
 };
 

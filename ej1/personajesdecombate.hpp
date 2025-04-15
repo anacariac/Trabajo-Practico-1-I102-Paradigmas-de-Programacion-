@@ -8,7 +8,7 @@ class Barbaro: public GUERREROS{
         TipoBarbaro tipoBarbaro;
     
     public:
-        Barbaro(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, TipoBarbaro TipoBarbaro);
+        Barbaro(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, TipoBarbaro TipoBarbaro);
 
         void Atacar() override;
         void Descansar() override;
@@ -23,7 +23,7 @@ class Paladin: public GUERREROS{
         bool bendecido;
     
     public:
-        Paladin(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas,bool bendecido);
+        Paladin(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas,bool bendecido);
 
         void Atacar() override;
         void Descansar() override;
@@ -38,7 +38,7 @@ class Caballero: public GUERREROS{
         TipoCaballero tipoCaballero;
     
     public:
-        Caballero(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, TipoCaballero tipoCaballero);
+        Caballero(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, TipoCaballero tipoCaballero);
 
         void Atacar() override;
         void Descansar() override;
@@ -55,7 +55,7 @@ class Mercenario: public GUERREROS{
         int oro;
     
     public:
-        Mercenario(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, int oro);
+        Mercenario(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, int oro);
 
         void Atacar() override;
         void Descansar() override;
@@ -70,7 +70,7 @@ class Gladiador: public GUERREROS{
         bool enArena;
     
     public:
-        Gladiador(string nomb, string tipo, size_t fuerza, size_t resistencia, vector<shared_ptr<ARMAS>> armas, bool arena);
+        Gladiador(string nomb, int hp, size_t fuerza, size_t resistencia, vector<unique_ptr<ARMAS>> armas, bool arena);
 
         void Atacar() override;
         void Descansar() override;
